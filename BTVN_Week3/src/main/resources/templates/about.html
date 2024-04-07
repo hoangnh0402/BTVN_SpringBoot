@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>DANH SÁCH SINH VIÊN</h1>
+<table>
+    <thead class="column">
+    <tr>
+        <th>Họ và tên</th>
+        <th>Tài khoản</th>
+        <th>Mật khẩu</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="record" th:each=" item:${list}">
+        <td th:text="*{item.getFullName()}"></td>
+        <td th:text="*{item.getUserName()}"></td>
+        <td th:text="*{item.getPassWord()}"></td>
+    </tr>
+    <div class="text-center">
+        <a href="/user" class="py-2 px-3 text-sm font-semibold text-indigo-600">
+            View all user
+        </a>
+    </div>
+    </tbody>
+
+</table>
+</body>
+</html>
