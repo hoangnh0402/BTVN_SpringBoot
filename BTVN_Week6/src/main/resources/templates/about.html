@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang quản lí tài khoản</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f4f6;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        thead {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        form {
+            display: inline;
+        }
+
+        .text-center {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4caf50;
+        }
+
+        a:hover {
+            color: #2e8b57;
+        }
+
+    </style>
+</head>
+<body>
+<h1>DANH SÁCH ACCOUNT</h1>
+<table border="2">
+    <thead class="column">
+    <tr>
+        <th>ID</th>
+        <th>Tài khoản</th>
+        <th>Mật khẩu</th>
+        <th>Email</th>
+        <th>Created</th>
+        <th>Updated</th>
+        <th colspan="2">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="record" th:each=" item:${list}">
+        <td th:text="*{item.getId()}"></td>
+        <td th:text="*{item.getUserName()}"></td>
+        <td th:text="*{item.getPassWord()}"></td>
+        <td th:text="*{item.getEmail()}"></td>
+        <td th:text="*{item.getCreatedAt()}"></td>
+        <td th:text="*{item.getUpdatedAt()}"></td>
+        <td>
+            <form th:action="@{/account_put/{id}(id=${item.getId()})}" method="get">
+                <input type="submit" value="UPDATE">
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/account_delete/{id}(id=${item.getId()})}" method="post">
+                <input type="submit" value="DELETE">
+            </form>
+        </td>
+    </tr>
+    <div class="text-center">
+        <a href="/account" class="py-2 px-3 text-sm font-semibold text-indigo-600">
+            View all account
+        </a>
+    </div>
+    </tbody>
+
+</table>
+<script>
+
+</script>
+</body>
+</html>
